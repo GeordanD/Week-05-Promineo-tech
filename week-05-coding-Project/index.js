@@ -1,36 +1,36 @@
 class Games{
-    constructor(name, genre, console) {
+    constructor(name, genre, Console) {
         this.name = name;
         this.genre = genre;
-        this.console = console;
+        this.Console = Console;
     }
     describe() {
-        return `${this.name} is an ${this.genre} on ${this.console}.`;
+        return `${this.name} is an ${this.genre} on ${this.Console}.`;
     }
 }
 
 class Console{
     constructor(name) {
         this.name = name;
-        this.console = [];
+        this.Console = [];
     }
 
-    addGame(game) {
-        if (game instanceof Games) {
-            this.games.push(games);
+    addGame(Games) {
+        if (Games instanceof Games) {
+            this.Games.push(Games);
         } else {
-            throw new Error(`You can only add an instance of Games. Argument is not a Game ${game}`);
+            throw new Error(`You can only add an instance of Games. Argument is not a Game ${Games}`);
         }
     }
 
     describe() {
-        return `${this.name} has ${this.games.length} games.`;
+        return `${this.name} has ${this.Games.length} Games.`;
     }
 }
 
 class Menu {
     constructor() {
-        this.game = [];
+        this.Console = [];
         this.selectedConsole = null;
     }
 
@@ -70,47 +70,47 @@ class Menu {
         `);
     }
 
-    showConsoleMenuOptions(consoleInfo) {
+    showConsoleMenuOptions(ConsoleInfo) {
         return prompt(`
         0) back
-        1) add game
-        2) delete game
+        1) add Games
+        2) delete Games
         ---------------
-        ${consoleInfo}
+        ${ConsoleInfo}
         `);
     }
 
     displayConsole() {
         let consoleString = "";
-        for (let i = 0; i < this.console.length; i++) {
-            consoleString += i + ") " + this.console[i].name + '\n';
+        for (let i = 0; i < this.Console.length; i++) {
+            consoleString += i + ") " + this.Console[i].name + '\n';
         }
-        alert(teamString);
+        alert(consoleString);
     }
 
     createConsole() {
-        let name = prompt('Enter name for new console:');
-        this.console.push(new console(name));
+        let name = prompt('Enter name for new Console:');
+        this.Console.push(new Console(name));
     }
 
 
     viewConsole() {
-        let index = prompt('Enter the index of the console you wish to view: ');
-        if (index > -1 && index < this.console.length) {
-            this.selectedConsole = this.console[index];
+        let index = prompt('Enter the index of the Console you wish to view: ');
+        if (index > -1 && index < this.Console.length) {
+            this.selectedConsole = this.Console[index];
             let description = 'Console Name: ' + this.selectedConsole.name + '\n';
 
-            for (let i = 0; i < this.selectedConsole.game.length; i++) {
-                description += i + ') ' + this.selectedConsole.game[i].position + '\n';
+            for (let i = 0; i < this.selectedConsole.length; i++) {
+                description += i + ') ' + this.selectedConsole.Games[i].position + '\n';
             }
 
             let selection = this.showConsoleMenuOptions(description);
             switch (selection) {
                 case '1':
-                    this.createGame();
+                    this.createGames();
                     break;
                 case '2':
-                    this.deleteGame();
+                    this.deleteGames();
             }
         }
     }
