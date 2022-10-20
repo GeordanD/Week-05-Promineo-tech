@@ -1,31 +1,32 @@
-class Games{
-    constructor(name, genre) {
-        this.name = name;
-        this.genre = genre;
-
-    }
-    describe() {
-        return `${this.name} is a ${this.genre}.`;
-    }
+class Games {
+  constructor(name, genre) {
+    this.name = name;
+    this.genre = genre;
+  }
+  describe() {
+    return `${this.name} is a ${this.genre}.`;
+  }
 }
 
-class Console{
-    constructor(name) {
-        this.name = name;
-        this.Games = [];
-    }
+class Console {
+  constructor(name) {
+    this.name = name;
+    this.Games = [];
+  }
 
-    addGame(Games) {
-        if (Games instanceof Games) {
-            this.Games.push(Games);
-        } else {
-            throw new Error(`You can only add an instance of Games. Argument is not a Game ${Games}`);
-        }
+  addGame(Games) {
+    if (Games instanceof Games) {
+      this.Games.push(Games);
+    } else {
+      throw new Error(
+        `You can only add an instance of Games. Argument is not a Game ${Games}`
+      );
     }
+  }
 
-    describe() {
-        return `${this.name} has ${this.Games.length} Games.`;
-    }
+  describe() {
+    return `${this.name} has ${this.Games.length} Games.`;
+  }
 }
 
 class Menu {
@@ -90,15 +91,15 @@ class Menu {
   createConsole() {
     let name = prompt("Enter name for new Console:");
     this.Console.push(new Console(name));
-    }
-    
+  }
+
   deleteConsole() {
     let index = prompt("Select a Console too delete");
-    if (index > -1 && index < this.selectedConsole.length) {
+    if (index > -1 && index < this.Console.length) {
       this.Console.splice(index, 1);
     }
-    }
-    
+  }
+
   viewConsole() {
     let index = prompt("Enter the index of the Console you wish to view: ");
     if (index > -1 && index < this.Console.length) {
@@ -106,7 +107,13 @@ class Menu {
       let description = "Console Name: " + this.selectedConsole.name + "\n";
 
       for (let i = 0; i < this.selectedConsole.Games.length; i++) {
-        description += i + ") " + this.selectedConsole.Games[i].name + ' - ' + this.selectedConsole.Games[i].genre + "\n";
+        description +=
+          i +
+          ") " +
+          this.selectedConsole.Games[i].name +
+          " - " +
+          this.selectedConsole.Games[i].genre +
+          "\n";
       }
 
       let selection = this.showConsoleMenuOptions(description);
@@ -127,8 +134,8 @@ class Menu {
 
   deleteGames() {
     let index = prompt("Select index of the game you would like to delete:");
-    if (index < -1 && index < this.selectedConsole.Games.length) {
-      this.Console.Games.splice(index, 1);
+    if (index > -1 && index < this.selectedConsole.Games.length) {
+      this.selectedConsole.Games.splice(index, 1);
     }
   }
 }
