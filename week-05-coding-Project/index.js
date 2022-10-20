@@ -61,19 +61,19 @@ class Menu {
 
   showMainMenuOptions() {
     return prompt(`
-        0) Escape.
-        1) Add New System.
-        2) View System.
-        3) Delete System.
-        4) Display all Systems.
+        1. Add New System
+        2. View System
+        3. Delete System
+        4. Display all Systems
+        5. Exit
         `);
   }
 
   showConsoleMenuOptions(ConsoleInfo) {
     return prompt(`
-        0) Go Back.
-        1) Add Game.
-        2) Delete Game.
+        1. Add Game
+        2. Delete Game
+        3. Go Back
         ---------------
         ${ConsoleInfo}
         `);
@@ -128,7 +128,7 @@ class Menu {
   deleteGames() {
     let index = prompt("Select index of the game you would like to delete:");
     if (index < -1 && index < this.selectedConsole.Games.length) {
-      this.selectedConsole.Games.splice(index, 1);
+      this.Console.Games.splice(index, 1);
     }
   }
 }
