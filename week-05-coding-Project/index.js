@@ -37,7 +37,7 @@ class Menu {
 
   start() {
     let selection = this.showMainMenuOptions();
-    while (selection != 0) {
+    while (selection != 5) {
       switch (selection) {
         case "1":
           this.createConsole();
@@ -63,9 +63,9 @@ class Menu {
   showMainMenuOptions() {
     return prompt(`
         1. Add New Game Console
-        2. View Game Console's
+        2. View Game Consoles
         3. Delete a Console
-        4. Display all Game Console's
+        4. Display all Game Consoles
         5. Exit
         `);
   }
@@ -83,33 +83,33 @@ class Menu {
   displayConsole() {
     let consoleString = "";
     for (let i = 0; i < this.Console.length; i++) {
-      consoleString += i + ") " + this.Console[i].name + "\n";
+      consoleString += i + ". " + this.Console[i].name + "\n";
     }
     alert(consoleString);
   }
 
   createConsole() {
-    let name = prompt("Enter name for new Console:");
+    let name = prompt("Enter name for new console:");
     this.Console.push(new Console(name));
   }
 
   deleteConsole() {
-    let index = prompt("Select a Console too delete");
+    let index = prompt("Select a console to delete");
     if (index > -1 && index < this.Console.length) {
       this.Console.splice(index, 1);
     }
   }
 
   viewConsole() {
-    let index = prompt("Enter the index of the Console you wish to view: ");
+    let index = prompt("Enter the index of the console you wish to view: ");
     if (index > -1 && index < this.Console.length) {
       this.selectedConsole = this.Console[index];
       let description = "Console Name: " + this.selectedConsole.name + "\n";
 
       for (let i = 0; i < this.selectedConsole.Games.length; i++) {
         description +=
-          i +
-          ") " +
+          '             ' + i +
+          ". " +
           this.selectedConsole.Games[i].name +
           " - " +
           this.selectedConsole.Games[i].genre +
