@@ -62,18 +62,18 @@ class Menu {
 
   showMainMenuOptions() {
     return prompt(`
-        1. Add New System
-        2. View System
-        3. Delete System
-        4. Display all Systems
+        1. Add New Game Console
+        2. View Game Console's
+        3. Delete a Console
+        4. Display all Game Console's
         5. Exit
         `);
   }
 
   showConsoleMenuOptions(ConsoleInfo) {
     return prompt(`
-        1. Add Game
-        2. Delete Game
+        1. Add a Game
+        2. Delete a Game
         3. Go Back
         ---------------
         ${ConsoleInfo}
